@@ -8,3 +8,6 @@
  */
 
 #include "utils.h"
+
+void inicializaSeedAleatoria(void);
+int numeroAleatorio(int minimo, int maximo);

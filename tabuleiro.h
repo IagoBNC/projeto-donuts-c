@@ -30,3 +30,5 @@ typedef struct {
     int linhas;
     int colunas;
 } Tabuleiro;
+
+void inicializaTabuleiro(Tabuleiro *tabuleiro);

@@ -8,3 +8,5 @@
  */
 
 #include "tabuleiro.h"
+
+inicializaTabuleiro();

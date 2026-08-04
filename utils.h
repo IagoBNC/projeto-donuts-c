@@ -13,3 +13,6 @@
 #define UTILS_H
 
 #endif /* UTILS_H */
+
+void inicializaSeedAleatoria(void);
+int numeroAleatorio(int minimo, int maximo);

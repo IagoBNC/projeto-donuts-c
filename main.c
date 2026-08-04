@@ -17,5 +17,7 @@
 
 int main(void) {
     printf("Projeto DONUTS - estrutura inicial criada.\n");
+    inicializaSeedAleatoria();
+    incializaTabuleiro(&tabuleiro);
     return 0;
 }
