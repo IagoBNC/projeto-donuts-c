@@ -10,5 +10,13 @@
 
 #ifndef JOGADA_H
 #define JOGADA_H
+#include "tabuleiro.h"
 
 #endif /* JOGADA_H */
+
+typedef struct {
+ int linhas;
+ int colunas;
+ TipoMovimento direcaoImposta;
+ int houveLiberdade;
+} Jogada;

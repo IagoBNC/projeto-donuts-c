@@ -12,3 +12,7 @@
 #define VITORIA_H
 
 #endif /* VITORIA_H */
+
+typedef struct {
+    int visitado[TAM_TABULEIRO][TAM_TABULEIRO];
+} MapaVisitados;
