@@ -11,4 +11,6 @@
 #ifndef INSERT_H
 #define INSERT_H
 
+#include "tabuleiro.h"
+
 #endif /* INSERT_H */

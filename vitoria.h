@@ -11,8 +11,18 @@
 #ifndef VITORIA_H
 #define VITORIA_H
 
-#endif /* VITORIA_H */
+#include "tabuleiro.h"
 
+/*
+ * Struct usada para marcar quais casas já foram visitadas
+ * durante a busca (DFS/BFS) da maior região conectada de peças.
+ * Mantida separada da struct Casa para não misturar dados
+ * permanentes do jogo com dados temporários de algoritmo.
+ */
 typedef struct {
     int visitado[TAM_TABULEIRO][TAM_TABULEIRO];
 } MapaVisitados;
+
+#endif /* VITORIA_H */
+
+
