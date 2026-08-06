@@ -16,36 +16,35 @@
 #define QTD_TIPOS 4 // Quantidade de tipos de movimentação distintos
 
 /*
- * Enum que representa os 4 tipos de movimentos possiveis
- * em uma casa do tabuleiro. Cada tipo indica a direcao que o
- * proximo jogador é obrigado a seguir ao jogar.
+ * Enum que representa os 4 tipos de movimentação possíveis
+ * em uma casa do tabuleiro. Cada tipo indica a direção que o
+ * PRÓXIMO jogador é obrigado a seguir ao jogar.
  */
-
 typedef enum {
     HORIZONTAL,
     VERTICAL,
-    DIAGONAL_PRINCIPAL, // Diagonal no sentido \.
-    DIAGONAL_SECUNDARIA, // Diagonal no sentido /.
+    DIAGONAL_PRINCIPAL,   /* Diagonal no sentido \ (canto sup. esq. -> inf. dir.) */
+    DIAGONAL_SECUNDARIA   /* Diagonal no sentido / (canto sup. dir. -> inf. esq.) */
 } TipoMovimento;
 
 /*
- *  Struct que representa uma unica casa do tabuleiro.
- *  - ocupante: caractere do jogador que ocupa a casa ('X', 'O')
- *  ou CASA_VAZIA se estiver livre.
- *  - tipo: tipo de movimentação associada a essa casa, definada na preparacao do trabalho.
+ * Struct que representa uma única casa do tabuleiro.
+ * - ocupante: caractere do jogador que ocupa a casa ('X', 'O')
+ *             ou CASA_VAZIA se estiver livre.
+ * - tipo: tipo de movimentação (direção) associada a essa casa,
+ *         definida na preparação do tabuleiro.
  */
-
 typedef struct {
-    char ocupante; // 'X', 'O' ou CASA_VAZIA
-    TipoMovimento tipo; // direcao associada a casa
+    char ocupante;
+    TipoMovimento tipo;
 } Casa;
 
 /*
- *  Struct que representa o tabuleiro completo do jogo.
- *  - casa: matriz 6x6 de Casa.
- *  - linhas / colunas: dimesões do tabuleiro (fixas em 6, mas mantidas explicitas para flexibilidade no codigo).
+ * Struct que representa o tabuleiro completo do jogo.
+ * - casas: matriz 6x6 de Casa.
+ * - linhas / colunas: dimensões do tabuleiro (fixas em 6, mas
+ *   mantidas explícitas para flexibilidade e clareza no código).
  */
-
 typedef struct {
     Casa casas[TAM_TABULEIRO][TAM_TABULEIRO];
     int linhas;
@@ -77,6 +76,22 @@ void inicializaTabuleiro(Tabuleiro *tabuleiro);
  *               (const pois a função apenas lê os dados).
  */
 void exibeTabuleiro(const Tabuleiro *tabuleiro);
+
+/*
+ * Conta o número total de casas ocupadas (peças) no tabuleiro,
+ * usado para verificar a condição de fim de partida por limite
+ * de turnos (30 peças).
+ * Parâmetros:
+ *   tabuleiro - ponteiro constante para o tabuleiro.
+ * Retorno: quantidade total de peças no tabuleiro.
+ */
+int contaTotalPecas(const Tabuleiro *tabuleiro);
+
+/*
+ * Retorna o nome (em português) de um TipoMovimento, usado para
+ * exibir mensagens amigáveis ao jogador (ex.: "Direcao imposta: Vertical").
+ */
+const char *nomeTipoMovimento(TipoMovimento tipo);
 
 #endif /* TABULEIRO_H */
 

@@ -9,8 +9,8 @@
 
 #include <stdio.h>
 #include <stddef.h>
-#include "tabuleiro.h"
-#include "utils.h"
+#include "../include/tabuleiro.h"
+#include "../include/utils.h"
 
 /*
  * Embaralha um vetor de TipoMovimento utilizando o algoritmo
@@ -148,3 +148,35 @@ void exibeTabuleiro(const Tabuleiro *tabuleiro) {
            "P = Diagonal Principal | S = Diagonal Secundaria\n");
 }
 
+/*
+ * Conta quantas casas do tabuleiro estão ocupadas (diferentes de
+ * CASA_VAZIA), percorrendo toda a matriz.
+ */
+int contaTotalPecas(const Tabuleiro *tabuleiro) {
+    if (tabuleiro == NULL) {
+        return 0;
+    }
+    int total = 0;
+    for (int linha = 0; linha < tabuleiro->linhas; linha++) {
+        for (int coluna = 0; coluna < tabuleiro->colunas; coluna++) {
+            if (tabuleiro->casas[linha][coluna].ocupante != CASA_VAZIA) {
+                total++;
+            }
+        }
+    }
+    return total;
+}
+
+/*
+ * Retorna uma string amigável com o nome do tipo de movimentação,
+ * usada para exibir mensagens ao jogador.
+ */
+const char *nomeTipoMovimento(TipoMovimento tipo) {
+    switch (tipo) {
+        case HORIZONTAL:          return "Horizontal";
+        case VERTICAL:             return "Vertical";
+        case DIAGONAL_PRINCIPAL:   return "Diagonal Principal";
+        case DIAGONAL_SECUNDARIA:  return "Diagonal Secundaria";
+        default:                   return "Desconhecido";
+    }
+}
